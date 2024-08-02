@@ -14,9 +14,9 @@ const NewsBoard = ({category}) => {
     <div className="container">
       <h2 className="text-center">Latest <span className="badge bg-danger ">News</span></h2>
       <div className="news">
-        {articles && articles.map((news, index) => {
-          return <NewsItem key={index} title={news.title} description={news.description} src={news.urlToImage} url={news.url} />
-        })}
+        {articles && articles.map((news, index) => (
+           <NewsItem key={index} title={news.title} description={news.description} src={news.urlToImage} url={news.url} />
+        ))}
       </div>
     </div>
   )

@@ -80,6 +80,9 @@ body {
 .navbar-toggler {
   background-color: #9E9E9E;
 }
+nav ul li {
+  cursor: pointer;
+}
 .container {
   padding: 50px 15px;
 }
