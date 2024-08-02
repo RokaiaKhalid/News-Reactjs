@@ -6,10 +6,27 @@ const NewsBoard = ({category}) => {
 
     useEffect(() => {
         let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${import.meta.env.VITE_API_KEY}`;
-      fetch(url).then(response => response.json()).then(data => setArticles(data.articles))
-      .catch(error => console.error('Error fetching data:', error));
+    //   fetch(url).then(response => response.json()).then(data => setArticles(data.articles))
+    //   .catch(rej => console.log(rej));
 
-    },[category]) 
+    // },[category]) 
+
+    fetch(url)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.articles) {
+            setArticles(data.articles);
+        } else {
+            throw new Error("No articles found in the response");
+        }
+    })
+    .catch(error => console.error("Error fetching data:", error));
+}, [category]);
 
   return (
     <div className="container">
